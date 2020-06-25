@@ -10,8 +10,8 @@ const list = [
 ]
 
 const form = [
-  { id: 1, name: 'monthly', title: 'Bill monthly', price: 390, period: 'month', checked: true },
-  { id: 2, name: 'yearly', title: 'Bill yearly', price: 3900, period: 'year', checked: false },
+  { id: 1, name: 'monthly', title: 'Bill monthly', price: 390, period: 'month', message: '', checked: true },
+  { id: 2, name: 'yearly', title: 'Bill yearly', price: 3900, period: 'year', message: 'Save 2 month', checked: false },
 ]
 
 function App() {
@@ -59,20 +59,22 @@ function App() {
               {form.map(item => (
                 <div className='form-group' key={item.id}>
                   <label className={`card card-body d-flex flex-row justify-content-between align-items-center ${select === item.name ? 'active' : ''}`}>
-                    <div className='col-12 col-md-6 d-flex align-items-center'>
-                      <input type='radio' name={item.name} className='card-input-element mr-3' checked={select === item.name} onChange={e => handleChange(e)} />
-                      <div className="">{item.title}</div>
+                    <div className='col-12 col-md-6 d-flex align-items-center item-content'>
+                      <input type='radio' name={item.name} className='item-input mr-3' checked={select === item.name} onChange={e => handleChange(e)} />
+                      <span className='item-checkmark'></span>
+                      <div className='item-title'>{item.title}</div>
+                      {item.message && <div className='item-message'>{item.message}</div>}
                     </div>
 
                     <div className='col-12 col-md-6 d-flex align-items-center'>
-                      <div className='price'>{`$${item.price}`}</div>
-                      <div className='period'>{`/${item.period}`}</div>
+                      <div className='item-price'>{`$${item.price}`}</div>
+                      <div className='item-period'>{`/${item.period}`}</div>
                     </div>
                   </label>
                 </div>
               ))}
 
-              <button className='btn btn-lg btn-primary btn-block btn-send'>Subscribe now</button>
+              <button className='btn btn-lg btn-primary btn-block btn-send mt-4'>Subscribe now</button>
 
             </form>
           </div>

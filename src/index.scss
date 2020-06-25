@@ -8,7 +8,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #f5f5f5;
   color: #7a79ab;
-  // #745be6
 }
 
 code {
@@ -19,7 +18,7 @@ code {
   display: flex;
   .content {
     width: 100%;
-    max-width: 600px;
+    max-width: 700px;
     margin: auto;
     background-color: #fff;
     position: relative;
@@ -55,6 +54,9 @@ code {
     top: 0;
     left: 0;
     right: 0;
+    @media (max-width: 767px) {
+      top: -15px;
+    }
   }
 }
 
@@ -67,6 +69,25 @@ code {
     color: #34334e;
     font-weight: 500;
     transition: border-color 0.4s ease;
+    padding: 10px 15px;
+    > div {
+      height: 44px;
+    }
+    .item-input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+    }
+    .item-checkmark {
+      position: relative;
+      top: 0;
+      left: 0;
+      height: 20px;
+      width: 20px;
+      background-color: #fff;
+      border: 3px solid #b4a6f2;
+      border-radius: 50%;
+    }
     &:hover {
       cursor: pointer;
       box-shadow: 0.1875rem 0.1875rem 0.625rem -0.125rem rgba(0, 0, 0, 0.09);
@@ -75,15 +96,36 @@ code {
       cursor: pointer;
       border-color: #745be6;
       box-shadow: 0.1875rem 0.1875rem 0.625rem -0.125rem rgba(0, 0, 0, 0.09);
+      .item-checkmark {
+        border: 6px solid #745be6;
+      }
+    }
+    .item-message {
+      background-color: #f1eefc;
+      color: #6e56e5;
+      margin-left: 10px;
+      padding: 10px 15px;
+      border-radius: 25px;
+      text-transform: uppercase;
+      font-size: 12px;
     }
     @media (max-width: 767px) {
       flex-direction: column !important;
       > div {
-        margin-bottom: 10px;
+        margin-bottom: 8px;
+      }
+      .item-message {
+        padding: 0 12px;
+        height: 24px;
+        display: flex;
+        align-items: center;
       }
     }
   }
-  .period {
+  .item-title {
+    margin-left: 10px;
+  }
+  .item-period {
     color: #b8b8d9;
     font-weight: 400;
   }
